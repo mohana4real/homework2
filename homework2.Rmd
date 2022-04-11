@@ -1,6 +1,6 @@
 ---
 title: "Homework 2"
-author: "PSTAT 131/231"
+author: "PSTAT 131/231 - Mohana Nukala"
 output:
   html_document:
     toc: yes
@@ -40,9 +40,10 @@ library("tidymodels")
 abalone <- read_csv("abalone.csv")
 abalone$Age <- abalone$rings + 1.5
 hist(abalone$Age)
-#Based on the histogram, we can see that the histogram is right-skewed
-abalone
+
 ```
+
+### Based on the histogram, we can see that the histogram is right-skewed
 
 
 ### Question 2
@@ -142,35 +143,6 @@ abalone_train_res <- predict(lm_fit, new_data = abalone_train  %>% select(-Age, 
 abalone_train_res <- bind_cols(abalone_train_res, abalone_train %>% select(Age))
 abalone_metrics(abalone_train_res, truth = Age, estimate = .pred)
 ```
+### From question 7, we can see that  the RMSE is 2.1953129, R^2 is 0.5379581, and mae is 1.5662984. R^2 specifically tells us that 53.70% variability is caused by the predictors.
 
-
-### Required for 231 Students
-
-In lecture, we presented the general bias-variance tradeoff, which takes the form:
-
-$$
-E[(y_0 - \hat{f}(x_0))^2]=Var(\hat{f}(x_0))+[Bias(\hat{f}(x_0))]^2+Var(\epsilon)
-$$
-
-where the underlying model $Y=f(X)+\epsilon$ satisfies the following:
-
-- $\epsilon$ is a zero-mean random noise term and $X$ is non-random (all randomness in $Y$ comes from $\epsilon$);
-- $(x_0, y_0)$ represents a test observation, independent of the training set, drawn from the same model;
-- $\hat{f}(.)$ is the estimate of $f$ obtained from the training set.
-
-#### Question 8
-
-Which term(s) in the bias-variance tradeoff above represent the reproducible error? Which term(s) represent the irreducible error?
-
-#### Question 9
-
-Using the bias-variance tradeoff above, demonstrate that the expected test error is always at least as large as the irreducible error.
-
-#### Question 10
-
-Prove the bias-variance tradeoff.
-
-Hints:
-
-- use the definition of $Bias(\hat{f}(x_0))=E[\hat{f}(x_0)]-f(x_0)$;
-- reorganize terms in the expected test error by adding and subtracting $E[\hat{f}(x_0)]$
+ 
